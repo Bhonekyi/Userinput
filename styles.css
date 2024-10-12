@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.user-input {
+    margin-bottom: 20px;
+}
+
+.user-input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+.selections-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.selection-button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+}
+
+.selection-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style for selected buttons */
+.selection-button.selected {
+    background-color: #28a745; /* Change color when selected */
+}
+
+.action-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.action-button:hover {
+    background-color: #218838;
+}
+
+.copy-box {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.selection-button.selected {
+    background-color: green; /* Change color for selected state */
+    color: white; /* Text color for selected state */
+}
