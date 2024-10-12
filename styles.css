@@ -1,10 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
+    
 }
 
 .container {
-    max-width: 600px;
+    max-width: 300px;
     margin: 20px auto;
     padding: 20px;
     background: white;
@@ -21,9 +22,11 @@ h1 {
 }
 
 .user-input-field {
-    width: 100%;
+    width: 95%;
     padding: 8px;
     margin: 8px 0;
+    border-color: gold;
+    border-radius: 4px;
 }
 
 .selections-container {
@@ -38,7 +41,7 @@ h1 {
     margin: 5px;
     background-color: #007bff;
     color: white;
-    border: none;
+    border-color: gold;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s; /* Add transition for smooth color change */
@@ -62,10 +65,27 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
 }
-
 .action-button:hover {
     background-color: #218838;
 }
+
+
+
+.actions-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions-button:hover {
+    background-color: #218838;
+}
+
+
 
 .copy-box {
     margin-top: 20px;
@@ -76,4 +96,29 @@ h1 {
 .selection-button.selected {
     background-color: green; /* Change color for selected state */
     color: white; /* Text color for selected state */
+}
+
+
+/* Showcase Styles */
+#showcase {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa; /* Light gray background */
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+}
+
+/* Showcase Item Styles */
+#selectedUnitsDisplay {
+  padding: 5px;
+  margin: 3px 0;
+  background-color: dodgerblue;
+  border: solid 2px;/* Slightly darker gray */
+  border-radius: 3px;
+  width: 100%; /* Full width */
+  transition: background-color 0.3s;
+  color: gold;
 }

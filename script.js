@@ -80,22 +80,41 @@ function toggleSelection(unit, button) {
     button.classList.add('selected'); // Add selected class
   }
   console.log('Selected Units:', selectedUnits); // Log for debugging
+
+  // Update the live display of selected units
+  updateSelectedUnitsDisplay();
+}
+
+// Function to update the selected units display
+function updateSelectedUnitsDisplay() {
+  const selectedUnitsText = document.getElementById('selectedUnitsText');
+  selectedUnitsText.innerText = selectedUnits.join(', ') || 'None';
 }
 
 // Buy button functionality
 document.getElementById('buyButton').onclick = () => {
   const username = document.getElementById('username').value;
   const userid = document.getElementById('userid').value;
-  const price = document.getElementById('price').value;
+  const price = parseInt(document.getElementById('price').value, 10); // Parse price as integer
 
+  // Price limit settings
+  const minPrice = 100; // Minimum price
+  const maxPrice = 3000; // Maximum price
+
+  // Validate price input
   if (!username || !userid || !price || selectedUnits.length === 0) {
     alert('Please fill all fields and select at least one unit.');
     return;
   }
 
+  if (price < minPrice || price > maxPrice) { // Check if price is out of bounds
+    alert(`Price must be between ${minPrice} and ${maxPrice} ks.`); // Alert user
+    return;
+  }
+
   // Calculate total units
   let totalUnits = 0;
-  
+
   selectedUnits.forEach(unit => {
     if (specialUnitQuantities[unit]) {
       totalUnits += specialUnitQuantities[unit]; // Add quantity for special units
@@ -105,12 +124,12 @@ document.getElementById('buyButton').onclick = () => {
   });
 
   // Prepare the details for the details box
+  const detailsLines = selectedUnits.map(unit => `${unit} = ${price} ks`).join('\n'); // Format selections with prices
   const totalPrice = totalUnits * price; // Total price calculation
   const details = `
         Name: ${username}
         ID: ${userid}
-        Selections: ${selectedUnits.join(', ')}
-        Total Units: ${totalUnits}
+        ${detailsLines}
         Total Price: ${totalPrice} ks
     `;
   document.getElementById('detailsBox').innerText = details;
@@ -131,6 +150,15 @@ document.getElementById('deleteButton').onclick = () => {
   // Reset button styles
   const buttons = document.querySelectorAll('.selection-button');
   buttons.forEach(button => button.classList.remove('selected'));
+  updateSelectedUnitsDisplay(); // Update display after clearing selections
+};
+
+// Clear All button functionality
+document.getElementById('clearAllButton').onclick = () => {
+  selectedUnits = []; // Clear selected units
+  const buttons = document.querySelectorAll('.selection-button');
+  buttons.forEach(button => button.classList.remove('selected')); // Reset button styles
+  updateSelectedUnitsDisplay(); // Update display after clearing selections
 };
 
 // Generate selection buttons when the page loads
